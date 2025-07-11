@@ -1,18 +1,26 @@
-import { useState } from 'react'
-import SignUp from './components/SignUp';
-import Login from './components/Login';
-import './App.css'
-
+// App.tsx
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { useAuth } from "./context/AuthContext";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
+  const { user } = useAuth();
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center gap-8 p-6">
-      <h1 className="text-3xl font-bold">🏃‍♀️ Stride — Run Analytics</h1>
-      <SignUp />
-      <Login />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={user ? <Navigate to="/dashboard" /> : <Login />}
+        />
+        <Route
+          path="/dashboard"
+          element={user ? <Dashboard /> : <Navigate to="/" />}
+        />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
-export default App
+export default App;

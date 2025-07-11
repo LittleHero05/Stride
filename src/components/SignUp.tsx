@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
-import { auth } from '../firebase'; // Adjust the import path as necessary
+import { auth } from '../firebase/firebase'; // Adjust the import path as necessary
 
 export default function SignUp() {
     const [email, setEmail] = useState('');
