@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import Navbar from "../components/Navbar";
 import CSVUpload from "../components/CSVUpload";
 import { useAuth } from "../context/AuthContext";
+import WorkoutsList from "../components/WorkoutsList";
 
 const Dashboard = () => {
     const { user } = useAuth();
@@ -17,6 +18,7 @@ const Dashboard = () => {
             <h1 className="text-2xl font-bold">Dashboard</h1>
             <p>Welcome, {user.email}!</p>
             <CSVUpload />
+            <WorkoutsList />
             {/* Add more dashboard components here */}
         </div>
     );
